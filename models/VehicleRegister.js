@@ -9,4 +9,4 @@ const vehicleRegisterSchema = new Schema({
   vehicle_name: { type: String, required: true },
 });
 
-module.exports = mongoose.model("VehicleRegister", vehicleRegisterSchema);
+module.exports = mongoose.model("Vehicle", vehicleRegisterSchema);

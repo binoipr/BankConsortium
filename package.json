@@ -1,6 +1,6 @@
 {
   "name": "bank_consortium",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "server": "nodemon server.js"
   },

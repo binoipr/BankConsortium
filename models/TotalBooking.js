@@ -8,4 +8,4 @@ const totalBookingSchema = new Schema({
   total_amount: { type: Schema.Types.ObjectId, ref: "Booking" },
 });
 
-module.exports = mongoose.model("VehicleRegister", totalBookingSchema);
+module.exports = mongoose.model("Total", totalBookingSchema);
