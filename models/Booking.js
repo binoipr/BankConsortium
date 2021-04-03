@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const bookingSchema = new Schema({
   email: { type: Schema.Types.ObjectId, ref: "BankRegister" },
   company_registerNo: { type: Schema.Types.ObjectId, ref: "VehicleRegister" },
-  name: { type: String, required: true },
+  member_name: { type: String, required: true },
   member_No: { type: Number, required: true, unique: true },
   mobile_No: { type: String, required: true },
 
