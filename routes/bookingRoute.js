@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Bank = require("../models/Booking");
+const Booking = require("../models/Booking");
 const Total = require("../models/TotalBooking");
 
 //@route  POST /api/booking/new
@@ -39,6 +39,15 @@ router.post("/new", (req, res) => {
   })
     .save()
     .then((booked_data) => res.json(booked_data));
+});
+
+//@route  GET /api/booking/list
+//@desc   GET list of booking
+//@access public
+router.get("/list", (req, res) => {
+  Booking.find()
+    .sort({ vehicle_bookingNo: 1 })
+    .then((list) => res.json(list));
 });
 
 module.exports = router;
