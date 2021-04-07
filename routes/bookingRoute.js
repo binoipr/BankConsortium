@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Booking = require("../models/Booking");
+const Vehicle = require("../models/VehicleRegister");
 const Total = require("../models/TotalBooking");
 
 //@route  POST /api/booking/new
@@ -42,8 +43,40 @@ router.post("/new", (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  let total = await Total.findById(req.params.id);
-  console.log(total);
+  // console.log(req.body);
+  let vehicle = await Vehicle.findById(req.params.id);
+  //console.log(vehicle.company_registerNo);
+  // if (vehicle) {
+  //   const total = await Total.find();
+  //   console.log(total);
+  //   if (!total) {
+  //     res.send("Nothing here to update");
+  //   } else {
+  //     console.log("Hello Error");
+  //   }
+  // }
+});
+
+router.post("/total", (req, res) => {
+  const { company, vehicle_bookingNo, total_amount } = req.body;
+  const newTotal = new Total({
+    company,
+    vehicle_bookingNo,
+    total_amount,
+  });
+  console.log(newTotal);
+  newTotal.save(function (err, resp) {
+    if (err) {
+      console.log(err);
+      res.send({
+        message: "something went wrong",
+      });
+    } else {
+      res.send({
+        message: "the appointment has been saved",
+      });
+    }
+  });
 });
 
 // total_Amount = parseInt(Total.total_Amount) + parseInt(total_Amount);

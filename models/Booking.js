@@ -12,7 +12,6 @@ const bookingSchema = new Schema({
   member_No: { type: Number, required: true, unique: true },
   mobile_No: { type: String, required: true, max: 9999999999 },
 
-  vehicle_bookingNo: { type: Number, default: 0, unique: true },
   downpayment: { type: Number, required: true },
   loan_Amount: { type: Number, required: true },
   total_Amount: { type: Number, required: true },
