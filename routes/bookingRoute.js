@@ -9,8 +9,6 @@ const Total = require("../models/TotalBooking");
 //@access public
 router.post("/new", (req, res) => {
   const {
-    email,
-    company_registerNo,
     name,
     member_name,
     member_No,
@@ -24,8 +22,6 @@ router.post("/new", (req, res) => {
     expected_delivery,
   } = req.body;
   const newBooking = new Booking({
-    email,
-    company_registerNo,
     name,
     member_name,
     member_No,
@@ -45,56 +41,47 @@ router.post("/new", (req, res) => {
 router.put("/:id", async (req, res) => {
   // console.log(req.body);
   let vehicle = await Vehicle.findById(req.params.id);
-  //console.log(vehicle.company_registerNo);
-  // if (vehicle) {
-  //   const total = await Total.find();
-  //   console.log(total);
-  //   if (!total) {
-  //     res.send("Nothing here to update");
-  //   } else {
-  //     console.log("Hello Error");
-  //   }
-  // }
+  console.log(vehicle.company_registerNo);
+  if (vehicle) {
+    var total = await Total.findOne(
+      { company: "vehicle.company_registerNo" },
+      (err, data) => {
+        if (err) {
+          res.send("error !!!");
+        } else {
+          res.send("Ok");
+        }
+      }
+    );
+  }
 });
 
-router.post("/total", (req, res) => {
-  const { company, vehicle_bookingNo, total_amount } = req.body;
-  const newTotal = new Total({
-    company,
-    vehicle_bookingNo,
-    total_amount,
+router.post("/total", async (req, res) => {
+  const company = await Vehicle.findOne({
+    company_registerNo: req.body.company_registerNo,
   });
-  console.log(newTotal);
-  newTotal.save(function (err, resp) {
-    if (err) {
-      console.log(err);
-      res.send({
-        message: "something went wrong",
+  if (company) {
+    if (company.company_registerNo == req.body.company_registerNo) {
+      const _company_id = company._id;
+      const { vehicle_bookingNo, total_amount } = req.body;
+
+      const newTotal = new Total({
+        _company_id,
+        vehicle_bookingNo,
+        total_amount,
       });
+      newTotal
+        .save()
+        .then((data) => res.json(data))
+        .catch((err) => res.json({ msg: "Error occured" }));
     } else {
-      res.send({
-        message: "the appointment has been saved",
-      });
+      console.log("ERROR HOY 2");
     }
-  });
+  } else {
+    res.send({ msg: "No company in this no" });
+  }
 });
 
-// total_Amount = parseInt(Total.total_Amount) + parseInt(total_Amount);
-// vehicle_bookingNo =
-//   parseInt(Total.vehicle_bookingNo) + parseInt(vehicle_bookingNo);
-//   Total
-//   const newTotal = new Total({
-//     company_registerNo,
-//     vehicle_bookingNo,
-//     total_Amount,
-//   })
-//     .save()
-//     .then((data) => res.json(data));
-// });
-
-//@route  GET /api/booking/list
-//@desc   GET list of booking
-//@access public
 router.get("/list", (req, res) => {
   Booking.find()
     .sort({ vehicle_bookingNo: 1 })

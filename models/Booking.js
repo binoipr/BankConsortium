@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "BankRegister" },
-  company_registerNo: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "VehicleRegister",
-  },
+  // company_registerNo: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "VehicleRegister",
+  // },
   member_name: { type: String, required: true },
   member_No: { type: Number, required: true, unique: true },
   mobile_No: { type: String, required: true, max: 9999999999 },
