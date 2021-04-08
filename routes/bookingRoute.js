@@ -39,20 +39,23 @@ router.post("/new", (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  // console.log(req.body);
   let vehicle = await Vehicle.findById(req.params.id);
-  console.log(vehicle.company_registerNo);
-  if (vehicle) {
-    var total = await Total.findOne(
-      { company: "vehicle.company_registerNo" },
+  if (vehicle._id == req.params.id) {
+    var old_total = await Total.findOne({ _company_id: vehicle._id });
+    console.log(old_total);
+    var total =
+      parseInt(old_total.total_amount) + parseInt(req.body.total_amount);
+    console.log(old_total._id);
+    Total.findByIdAndUpdate(
+      old_total._id,
+      { total_amount: total },
       (err, data) => {
-        if (err) {
-          res.send("error !!!");
-        } else {
-          res.send("Ok");
-        }
+        if (err) res.send({ msg: "Update error" });
+        else res.json(data);
       }
     );
+  } else {
+    res.json({ msg: "Not a registerd vehicle" });
   }
 });
 
