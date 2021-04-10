@@ -38,6 +38,9 @@ router.post("/new", (req, res) => {
     .then((booked_data) => res.json(booked_data));
 });
 
+//@route  PUT /api/booking/:id
+//@desc   Update total amount
+//@access public
 router.put("/:id", async (req, res) => {
   let vehicle = await Vehicle.findById(req.params.id);
   if (vehicle._id == req.params.id) {
@@ -59,6 +62,9 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+//@route  POST /api/booking/total
+//@desc   Adding  total amount
+//@access public
 router.post("/total", async (req, res) => {
   const company = await Vehicle.findOne({
     company_registerNo: req.body.company_registerNo,

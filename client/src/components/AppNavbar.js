@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -13,6 +14,7 @@ import {
   DropdownItem,
   NavbarText,
 } from "reactstrap";
+import Bank from "./BankRegister";
 
 class AppNavbar extends Component {
   state = {
@@ -28,32 +30,46 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">BC</NavbarBrand>
+        <Navbar style={{ backgroundColor: "#97A4AC" }} light expand="md">
+          <NavbarBrand href="/">
+            <img src="/images/cooperative.png"></img>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
+                <NavLink href="/home">
+                  <i className="fa fa-home"></i>
                 </NavLink>
               </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Register
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
+                  <DropdownItem href="/bank">Bank</DropdownItem>
+                  <DropdownItem>Vehicle Company</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Booked List
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>Bike</DropdownItem>
+                  <DropdownItem>Car</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+
+              <NavItem>
+                <NavLink href="/logout">Easy</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/logout">Logout</NavLink>
+              </NavItem>
             </Nav>
-            <NavbarText>Fb logo</NavbarText>
           </Collapse>
         </Navbar>
       </div>
