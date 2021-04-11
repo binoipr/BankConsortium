@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AppNavbar from "./AppNavbar";
+import Scroll from "./Imagescrol";
 
 class Home extends Component {
   state = {
@@ -9,7 +10,7 @@ class Home extends Component {
     return (
       <div>
         <AppNavbar />
-        <h3>Hello Binoy</h3>
+        <Scroll />
       </div>
     );
   }
