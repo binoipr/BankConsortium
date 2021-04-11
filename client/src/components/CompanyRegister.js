@@ -12,8 +12,9 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import AppNavbar from "./AppNavbar";
 
-class BankRegister extends Component {
+class CompanyRegister extends Component {
   state = {
     modal: false,
     name: "",
@@ -32,8 +33,9 @@ class BankRegister extends Component {
   render() {
     return (
       <div>
+        <AppNavbar />
         <DropdownItem color="dark" onClick={this.toggle}>
-          Register a bank
+          Register a Company
         </DropdownItem>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>register a bank</ModalHeader>
@@ -71,12 +73,6 @@ class BankRegister extends Component {
                   Upload image
                 </Label>
 
-                <FileBase
-                  type="file"
-                  multiple={false}
-                  onDone={this.onFileChange}
-                />
-
                 <Button color="dark" style={{ marginTop: "1rem" }} block>
                   Add Item
                 </Button>
@@ -92,4 +88,4 @@ const mapStateToProps = (state) => ({
   item: state.item,
 });
 
-export default BankRegister;
+export default CompanyRegister;

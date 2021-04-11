@@ -8,21 +8,20 @@ import React, { component, Fragment, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppNavbar from "./components/AppNavbar";
-import Bank from "./components/BankRegister";
+import CompanyRegister from "./components/CompanyRegister";
 import Login from "./components/Login";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <AppNavbar />
       <Router>
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Switch>
-              <Route path="/login" component={Login} />
-            </Switch>
-          </div>
-        </div>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/home" component={Home} />
+          <Route path="/company" component={CompanyRegister} />
+        </Switch>
       </Router>
     </div>
   );
