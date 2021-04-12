@@ -29,10 +29,10 @@ class AppNavbar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="AppNavbar">
         <Navbar style={{ backgroundColor: "#97A4AC" }} light expand="md">
           <NavbarBrand href="/">
-            <img src="/images/cooperative.png"></img>
+            <img className="img1" src="/images/cooperative.png"></img>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
