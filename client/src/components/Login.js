@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppNavbar from "./AppNavbar";
 import "../App.css";
 
 export default class Login extends Component {

@@ -15,6 +15,7 @@ import {
   NavbarText,
 } from "reactstrap";
 import Bank from "./BankRegister";
+import Vehicle from "./CompanyRegister";
 
 class AppNavbar extends Component {
   state = {
@@ -48,8 +49,12 @@ class AppNavbar extends Component {
                   Register
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem href="/bank">Bank</DropdownItem>
-                  <DropdownItem>Vehicle Company</DropdownItem>
+                  <DropdownItem>
+                    <Bank />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Vehicle />
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
 

@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
 
 import {
   DropdownItem,
@@ -12,30 +11,26 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import AppNavbar from "./AppNavbar";
 
-class BankRegister extends Component {
+class Bank extends Component {
   state = {
     modal: false,
-    name: "",
-    selectedFile: "",
-    price: "",
-    msg: "",
   };
-  toggle = () => {};
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  };
 
   onChange = (e) => {};
-
-  onFileChange = () => {};
 
   onSubmit = (e) => {};
 
   render() {
     return (
       <div>
-        <AppNavbar />
         <DropdownItem color="dark" onClick={this.toggle}>
-          Register a Company
+          Register a Bank
         </DropdownItem>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>register a bank</ModalHeader>
@@ -51,30 +46,25 @@ class BankRegister extends Component {
                   onChange={this.onChange}
                 />
 
-                <Label for="price">price</Label>
+                <Label for="email">Email</Label>
                 <Input
-                  type="text"
-                  name="price"
-                  id="price"
-                  placeholder="enter the price"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="enter the email"
                   onChange={this.onChange}
                 />
-
-                <Label for="msg">Enter the details</Label>
+                <Label for="password">Password</Label>
                 <Input
-                  type="text"
-                  name="msg"
-                  id="msg"
-                  placeholder="enter the details, separated with comma ,"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="enter password"
                   onChange={this.onChange}
                 />
-
-                <Label for="file" style={{ margin: "1rem" }}>
-                  Upload image
-                </Label>
 
                 <Button color="dark" style={{ marginTop: "1rem" }} block>
-                  Add Item
+                  Add new Bank
                 </Button>
               </FormGroup>
             </Form>
@@ -84,8 +74,5 @@ class BankRegister extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
-  item: state.item,
-});
 
-export default BankRegister;
+export default Bank;

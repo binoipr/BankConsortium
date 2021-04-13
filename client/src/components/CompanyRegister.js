@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
 
 import {
   DropdownItem,
@@ -12,67 +11,58 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import AppNavbar from "./AppNavbar";
 
-class CompanyRegister extends Component {
+class Vehicle extends Component {
   state = {
     modal: false,
-    name: "",
-    selectedFile: "",
-    price: "",
-    msg: "",
   };
-  toggle = () => {};
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  };
 
   onChange = (e) => {};
-
-  onFileChange = () => {};
 
   onSubmit = (e) => {};
 
   render() {
     return (
       <div>
-        <AppNavbar />
         <DropdownItem color="dark" onClick={this.toggle}>
           Register a Company
         </DropdownItem>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>register a bank</ModalHeader>
+          <ModalHeader toggle={this.toggle}>register a Company</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="name">bank name</Label>
+                <Label for="type">Vehicle type</Label>{" "}
+                <Input
+                  type="select"
+                  name="type"
+                  id="type"
+                  onChange={this.onChange}
+                >
+                  <option value="bike">bike</option>
+                  <option value="car">car</option>
+                </Input>
+                <Label for="registration">Company Registration No</Label>
+                <Input
+                  type="text"
+                  name="registration"
+                  id="registration"
+                  placeholder="enter the registration number"
+                  onChange={this.onChange}
+                />
+                <Label for="name">Company name</Label>
                 <Input
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Name of the bank"
+                  placeholder="Name of the Company"
                   onChange={this.onChange}
                 />
-
-                <Label for="price">price</Label>
-                <Input
-                  type="text"
-                  name="price"
-                  id="price"
-                  placeholder="enter the price"
-                  onChange={this.onChange}
-                />
-
-                <Label for="msg">Enter the details</Label>
-                <Input
-                  type="text"
-                  name="msg"
-                  id="msg"
-                  placeholder="enter the details, separated with comma ,"
-                  onChange={this.onChange}
-                />
-
-                <Label for="file" style={{ margin: "1rem" }}>
-                  Upload image
-                </Label>
-
                 <Button color="dark" style={{ marginTop: "1rem" }} block>
                   Add Item
                 </Button>
@@ -84,8 +74,5 @@ class CompanyRegister extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
-  item: state.item,
-});
 
-export default CompanyRegister;
+export default Vehicle;
