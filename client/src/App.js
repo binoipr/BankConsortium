@@ -11,6 +11,7 @@ import AppNavbar from "./components/AppNavbar";
 import CompanyRegister from "./components/CompanyRegister";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Booking from "./components/Newbooking";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/home" component={Home} />
           <Route path="/company" component={CompanyRegister} />
+          <Route path="/new" component={Booking} />
         </Switch>
       </Router>
     </div>

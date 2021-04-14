@@ -69,7 +69,7 @@ class AppNavbar extends Component {
               </UncontrolledDropdown>
 
               <NavItem>
-                <NavLink href="/logout">Easy</NavLink>
+                <NavLink href="/new">booking</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/logout">Logout</NavLink>
