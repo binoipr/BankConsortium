@@ -12,6 +12,7 @@ import CompanyRegister from "./components/CompanyRegister";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Booking from "./components/Newbooking";
+import { Container } from "reactstrap";
 
 function App() {
   return (

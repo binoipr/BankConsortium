@@ -138,3 +138,21 @@ html,
 
   color: darkslategrey;
 }
+
+.head {
+  text-align: center;
+  margin-top: 40px;
+  height: 200px;
+  width: auto;
+  background-color: #d3d3d3;
+}
+.inner-heading {
+  margin: 15px;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .head {
+    margin-top: 62px;
+  }
+}
