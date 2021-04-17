@@ -6,7 +6,10 @@ import {
   FormGroup,
   Row,
   Col,
-  Container,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
   Button,
 } from "reactstrap";
 import AppNavbar from "./AppNavbar";
@@ -15,18 +18,36 @@ class Booking extends Component {
   state = {
     Booking: [
       {
-        name: "",
+        isopen: false,
+        dropdown: "",
+        downpayment: "",
+        loanamount: "",
+        total: "",
       },
     ],
   };
+  toggle = () => {
+    this.setState({
+      isopen: !this.state.isopen,
+    });
+  };
+  onChange = (evt) => {
+    const value = evt.target.value;
+    this.setState({
+      ...this.state,
+      [evt.target.name]: value,
+    });
+    console.log(this.state.dropdown);
+  };
+
   render() {
     return (
       <div>
-        <AppNavbar />;
+        <AppNavbar />
         <div className="head">
           <h3>Total Booking</h3>
         </div>
-        <div>
+        <div className="booking">
           <div className="inner-heading">
             <h3>Primary Details</h3>
           </div>
@@ -35,9 +56,9 @@ class Booking extends Component {
               <FormGroup>
                 <Label for="name">Name</Label>
                 <Input
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
+                  type="text"
+                  name="name"
+                  id="member-name"
                   placeholder="with a placeholder"
                 />
               </FormGroup>
@@ -69,13 +90,27 @@ class Booking extends Component {
           <Row>
             <Col md={4}>
               <FormGroup>
-                <Label for="type">Type</Label>
-                <Input
-                  type="text"
-                  name="type"
-                  id="type"
-                  placeholder="enter the vehicle type"
-                />
+                <Label for="type">Vehicle</Label>
+
+                <Dropdown isOpen={this.state.isopen} toggle={this.toggle}>
+                  <DropdownToggle caret>{this.state.dropdown}</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem
+                      value="bike"
+                      name="dropdown"
+                      onClick={this.onChange}
+                    >
+                      bike
+                    </DropdownItem>
+                    <DropdownItem
+                      value="car"
+                      name="dropdown"
+                      onClick={this.onChange}
+                    >
+                      car
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </FormGroup>
             </Col>
             <Col md={4}>
@@ -110,21 +145,22 @@ class Booking extends Component {
                 <Label for="payment">Down payment</Label>
                 <Input
                   type="text"
-                  name="down-payment"
-                  id="down-payment"
-                  placeholder="downpayment"
+                  name="downpayment"
+                  id="downpayment"
+                  value={this.state.downpayment}
+                  onChange={this.onChange}
                 />
               </FormGroup>
             </Col>
-
             <Col md={3}>
               <FormGroup>
                 <Label for="loan-amount">Loan Amount</Label>
                 <Input
                   type="text"
-                  name="loan-amount"
-                  id="loan-amount"
-                  placeholder="loan-amount"
+                  name="loanamount"
+                  id="loanamount"
+                  value={this.state.loanamount}
+                  onChange={this.onChange}
                 />
               </FormGroup>
             </Col>
@@ -134,13 +170,16 @@ class Booking extends Component {
                 <Label for="total-amount">Total amount</Label>
                 <Input
                   type="text"
-                  name="total-amount"
-                  id="total-amount"
-                  placeholder="Total amount"
+                  name="total"
+                  id="total"
+                  value={
+                    parseInt(this.state.downpayment) +
+                    parseInt(this.state.loanamount)
+                  }
+                  placeholder={this.state.total}
                 />
               </FormGroup>
             </Col>
-
             <Col md={3}>
               <FormGroup>
                 <Label for="Interest">Interest rate</Label>
@@ -172,13 +211,27 @@ class Booking extends Component {
               </FormGroup>
             </Col>
           </Row>
-          <Button for="submit" className="primary">
-            Submit
-          </Button>
+          <div className="inner-submit">
+            <Button
+              for="submit"
+              type="button"
+              color="primary"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flex: 1,
+                height: "100%",
+              }}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
       </div>
     );
   }
 }
 
+console.log(Booking.state);
 export default Booking;

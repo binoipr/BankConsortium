@@ -15,6 +15,7 @@ body {
 
 .AppNavbar {
   position: fixed;
+  margin-top: 0;
 }
 
 .img1 {
@@ -135,24 +136,32 @@ html,
 }
 .title {
   font-weight: 900;
-
   color: darkslategrey;
 }
 
 .head {
   text-align: center;
-  margin-top: 40px;
-  height: 200px;
+  height: 300px;
+  padding-top: 70px;
   width: auto;
   background-color: #d3d3d3;
 }
 .inner-heading {
-  margin: 15px;
+  margin: 0px;
   text-align: center;
+}
+.inner-submit {
+  margin-left: 47%;
+}
+.booking {
+  padding: 15px;
 }
 
 @media (max-width: 650px) {
   .head {
-    margin-top: 62px;
+    padding-top: 85px;
+  }
+  .inner-submit {
+    margin-left: 41%;
   }
 }
