@@ -46,6 +46,28 @@ class Booking extends Component {
         <AppNavbar />
         <div className="head">
           <h3>Total Booking</h3>
+          <Row>
+            <Col md={3}>
+              <Label for="company">Company</Label>
+
+              <Dropdown isOpen={this.state.isopen} toggle={this.toggle}>
+                <DropdownToggle caret>select</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>Honda</DropdownItem>
+                  <DropdownItem>Hero</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+
+            <Col md={2}>
+              <Label for="MemNo">Numbers</Label>
+              <Input type="text" name="total-number" id="total-number" />
+            </Col>
+            <Col md={3}>
+              <Label for="MemNo">Amount</Label>
+              <Input type="text" name="total-amount" id="total-amount" />
+            </Col>
+          </Row>
         </div>
         <div className="booking">
           <div className="inner-heading">
