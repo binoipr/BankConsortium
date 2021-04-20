@@ -63,8 +63,8 @@ class AppNavbar extends Component {
                   Booked List
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Bike</DropdownItem>
-                  <DropdownItem>Car</DropdownItem>
+                  <DropdownItem href="/bikelist">Bike</DropdownItem>
+                  <DropdownItem href="/carlist">Car</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
 

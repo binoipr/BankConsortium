@@ -12,6 +12,8 @@ import CompanyRegister from "./components/CompanyRegister";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Booking from "./components/Newbooking";
+import CarList from "./components/Carlist";
+import BikeList from "./components/Bikelist";
 import { Container } from "reactstrap";
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/company" component={CompanyRegister} />
           <Route path="/new" component={Booking} />
+          <Route path="/carlist" component={CarList} />
+          <Route path="/bikelist" component={BikeList} />
         </Switch>
       </Router>
     </div>

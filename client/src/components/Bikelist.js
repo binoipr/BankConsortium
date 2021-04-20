@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
+import { Button, Table } from "reactstrap";
+import AppNavbar from "./AppNavbar";
 
 class BikeList extends Component {
   state = {
@@ -23,24 +24,36 @@ class BikeList extends Component {
   render() {
     return (
       <div>
-        <div className="ListHeading">
+        <AppNavbar />
+        <div className="listview">
           <div className="primary-title">
-            <p>Bike List</p>
+            <h3>Bike List</h3>
           </div>
-        </div>
-
-        <div className="latest-products">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="section-heading">
-                  <h2>Latest Products</h2>
-                  {/* <a href="products.html">
-                    view all products <i className="fa fa-angle-right"></i>
-                  </a> */}
-                </div>
-              </div>
-            </div>
+          <div className="booked">
+            <Table dark>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>M.No</th>
+                  <th>Vehicle</th>
+                  <th>B.date</th>
+                  <th>E.delivery</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>15</td>
+                  <td>Activa</td>
+                  <td>12/03/2021</td>
+                  <td>31/03/2021</td>
+                  <td>delivered</td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
         </div>
       </div>

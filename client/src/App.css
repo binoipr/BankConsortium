@@ -166,6 +166,14 @@ html,
 .booking {
   padding: 15px;
 }
+.listview {
+  align-items: center;
+  padding: 70px;
+  text-align: center;
+}
+.booked {
+  margin-top: 0;
+}
 
 @media (max-width: 650px) {
   .head {
