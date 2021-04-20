@@ -11,6 +11,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   Button,
+  UncontrolledDropdown,
 } from "reactstrap";
 import AppNavbar from "./AppNavbar";
 
@@ -20,6 +21,7 @@ class Booking extends Component {
       {
         isopen: false,
         dropdown: "",
+        dropdown1: "",
         downpayment: "",
         loanamount: "",
         total: "",
@@ -50,13 +52,28 @@ class Booking extends Component {
             <Col md={3}>
               <Label for="company">Company</Label>
 
-              <Dropdown isOpen={this.state.isopen} toggle={this.toggle}>
-                <DropdownToggle caret>select</DropdownToggle>
+              <UncontrolledDropdown>
+                <DropdownToggle caret>{this.state.dropdown1}</DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Honda</DropdownItem>
-                  <DropdownItem>Hero</DropdownItem>
+                  <DropdownItem
+                    value="Honda"
+                    name="dropdown1"
+                    onClick={this.onChange}
+                  >
+                    Honda
+                  </DropdownItem>
+                  <DropdownItem
+                    value="Hero"
+                    name="dropdown1"
+                    onClick={this.onChange}
+                  >
+                    Hero
+                  </DropdownItem>
                 </DropdownMenu>
-              </Dropdown>
+              </UncontrolledDropdown>
+              {/* <Dropdown isOpen={this.state.isopen} toggle={this.toggle}>
+                
+              </Dropdown> */}
             </Col>
 
             <Col md={2}>
