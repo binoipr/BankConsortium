@@ -1,27 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Button, Table } from "reactstrap";
 import AppNavbar from "./AppNavbar";
-
+import { v4 as uuid } from "uuid";
 class BikeList extends Component {
   state = {
     Vehicle: [
       {
-        name: "",
-        member_No: "",
-        mobile_No: "",
-        vehicle_bookingNo: "",
-        downpaymen: "",
-        loan_amount: "",
-        total_amount: "",
-        interest: "",
-        booking_date: "",
-        expected_delivery: "",
+        id: uuid(),
+        name: "John",
+        memberNo: "1",
+        vehicle: "Maestro",
+        booking_date: "22/03/2021",
+        expected_delivery: "31/03/2021",
       },
     ],
   };
 
   onDeleteClick = (id) => {};
   render() {
+    const Veh = this.state.Vehicle;
     return (
       <div>
         <AppNavbar />
@@ -33,25 +30,27 @@ class BikeList extends Component {
             <Table dark>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Name</th>
                   <th>M.No</th>
+                  <th>Name</th>
                   <th>Vehicle</th>
                   <th>B.date</th>
                   <th>E.delivery</th>
-                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>15</td>
-                  <td>Activa</td>
-                  <td>12/03/2021</td>
-                  <td>31/03/2021</td>
-                  <td>delivered</td>
-                </tr>
+                {Veh.map((item, id) => {
+                  return (
+                    <Fragment>
+                      <tr key={id}>
+                        <td>{item.memberNo}</td>
+                        <td>{item.name}</td>
+                        <td>{item.vehicle}</td>
+                        <td>{item.booking_date}</td>
+                        <td>{item.expected_delivery}</td>
+                      </tr>
+                    </Fragment>
+                  );
+                })}
               </tbody>
             </Table>
           </div>
