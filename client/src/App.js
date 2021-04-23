@@ -14,23 +14,26 @@ import Home from "./components/Home";
 import Booking from "./components/Newbooking";
 import CarList from "./components/Carlist";
 import BikeList from "./components/Bikelist";
-import { Container } from "reactstrap";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/home" component={Home} />
-          <Route path="/company" component={CompanyRegister} />
-          <Route path="/new" component={Booking} />
-          <Route path="/carlist" component={CarList} />
-          <Route path="/bikelist" component={BikeList} />
-        </Switch>
-      </Router>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/home" component={Home} />
+            <Route path="/company" component={CompanyRegister} />
+            <Route path="/new" component={Booking} />
+            <Route path="/api/carlist" component={CarList} />
+            <Route path="/api/bikelist" component={BikeList} />
+          </Switch>
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

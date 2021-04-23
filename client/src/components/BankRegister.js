@@ -1,4 +1,7 @@
+import { connect } from "react-redux";
 import { Component } from "react";
+import PropTypes from "prop-types";
+import { addBank } from "../actions/regActions";
 
 import {
   DropdownItem,
@@ -15,6 +18,9 @@ import {
 class Bank extends Component {
   state = {
     modal: false,
+    name: "",
+    email: "",
+    password: "",
   };
   toggle = () => {
     this.setState({
@@ -22,9 +28,24 @@ class Bank extends Component {
     });
   };
 
-  onChange = (e) => {};
+  onChange = (e) => {
+    const value = e.target.value;
+    this.setState({
+      ...this.state,
+      [e.target.name]: value,
+    });
+  };
 
-  onSubmit = (e) => {};
+  onSubmit = (e) => {
+    e.preventDefault();
+    const newBank = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+    };
+    this.props.addBank(newBank);
+    this.toggle();
+  };
 
   render() {
     return (
@@ -75,4 +96,8 @@ class Bank extends Component {
   }
 }
 
-export default Bank;
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+export default connect(mapStateToProps, { addBank })(Bank);
