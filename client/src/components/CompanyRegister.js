@@ -1,4 +1,7 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addCompany } from "../actions/regActions";
 
 import {
   DropdownItem,
@@ -15,6 +18,9 @@ import {
 class Vehicle extends Component {
   state = {
     modal: false,
+    type: "",
+    registration: "",
+    name: "",
   };
   toggle = () => {
     this.setState({
@@ -22,9 +28,24 @@ class Vehicle extends Component {
     });
   };
 
-  onChange = (e) => {};
+  onChange = (e) => {
+    const value = e.target.value;
+    this.setState({
+      ...this.state,
+      [e.target.name]: value,
+    });
+  };
 
-  onSubmit = (e) => {};
+  onSubmit = (e) => {
+    e.preventDefault();
+    const newCompany = {
+      type: this.state.type,
+      registration: this.state.registration,
+      name: this.state.name,
+    };
+    this.props.addCompany(newCompany);
+    this.toggle();
+  };
 
   render() {
     return (
@@ -44,8 +65,12 @@ class Vehicle extends Component {
                   id="type"
                   onChange={this.onChange}
                 >
-                  <option value="bike">bike</option>
-                  <option value="car">car</option>
+                  <option value="bike" name="type">
+                    bike
+                  </option>
+                  <option value="car" name="type">
+                    car
+                  </option>
                 </Input>
                 <Label for="registration">Company Registration No</Label>
                 <Input
@@ -75,4 +100,8 @@ class Vehicle extends Component {
   }
 }
 
-export default Vehicle;
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+export default connect(mapStateToProps, { addCompany })(Vehicle);

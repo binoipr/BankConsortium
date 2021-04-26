@@ -1,4 +1,4 @@
-import { ADD_ITEM } from "../actions/types";
+import { ADD_BANK, ADD_COMPANY } from "../actions/types";
 
 const initialState = {
   Data: [],
@@ -7,7 +7,13 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case ADD_ITEM:
+    case ADD_BANK:
+      return {
+        ...state,
+        Data: [action.payload, ...state.Data],
+      };
+      break;
+    case ADD_COMPANY:
       return {
         ...state,
         Data: [action.payload, ...state.Data],
