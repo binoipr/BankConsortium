@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "BankRegister" },
+  user: [{ type: mongoose.Schema.Types.ObjectId, ref: "BankRegister" }],
   // company_registerNo: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "VehicleRegister",
