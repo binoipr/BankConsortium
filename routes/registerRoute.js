@@ -4,6 +4,7 @@ const router = express.Router();
 const Bank = require("../models/BankRegister");
 const Vehicle = require("../models/VehicleRegister");
 const VehicleList = require("../models/VehicleList");
+
 //@route  POST /register/bank
 //@desc   Register a bank
 //@access public
@@ -15,6 +16,15 @@ router.post("/bank", (req, res) => {
     password,
   });
   newBank.save().then((bank) => res.json(bank));
+});
+
+//@route  GET /register/bank/list
+//@desc   Get registered bank list
+//@access public
+router.get("/bank/list", (req, res) => {
+  Bank.find()
+    .then((data) => res.json(data))
+    .catch((err) => res.status(400).json({ msg: "Bad request" }));
 });
 
 //@route  POST /register/vehicle
