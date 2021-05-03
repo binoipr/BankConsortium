@@ -40,6 +40,15 @@ router.post("/vehicle", (req, res) => {
   newCompany.save().then((company) => res.json(company));
 });
 
+//@route  GET /register/vehicle/list
+//@desc   Get registered vehicle company list
+//@access public
+router.get("/vehicle/list", (req, res) => {
+  Vehicle.find()
+    .then((data) => res.json(data))
+    .catch((err) => res.status(400).json({ msg: "Bad request" }));
+});
+
 //@route  POST /register/vehicle/add
 //@desc   Adding vehicle names
 //@access public
